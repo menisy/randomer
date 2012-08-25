@@ -23,6 +23,7 @@ group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
+gem 'faye'
 gem 'jquery-rails'
 gem "pg", "~> 0.14.0"
 

@@ -54,7 +54,8 @@ Randomer::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'home#first_page'
+   root :to => 'sessions#new'
+   match '/select_role/' => 'sessions#select_role'
    get  '/login' => 'sessions#new', :as => :login
    post '/login' => 'sessions#create', :as => :login
    get  '/chatroom' => 'chats#room', :as => :chat

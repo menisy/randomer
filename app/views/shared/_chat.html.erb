@@ -1,3 +1,15 @@
+<div class="chat_container">
+  <div id="chat_room">
+    <p class="alert"> Welcome to the chat room <%= session[:username] %>! </p>
+  </div>
+  <div id="chat-msgs">
+  	<div>
+ 
+  <form id="new_message_form">
+    <input type="text" id="message" name="message">
+    <input type="submit" value="Send">
+  </form>
+</div>
 <script>
   $(function() {
     // Create a new client to connect to Faye
@@ -22,13 +34,3 @@
     });
   });
 </script>
-<div class="chat_container">
-  <div id="chat_room">
-    <p class="alert"> Welcome to the chat room <%= session[:username] %>! </p>
-  </div>
- 
-  <form id="new_message_form">
-    <input type="text" id="message" name="message">
-    <input type="submit" value="Send">
-  </form>
-</div>

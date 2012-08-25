@@ -1,5 +1,53 @@
-<%= form_tag login_path do |f| %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <%= submit_tag "Enter" %>
-<% end %>
+<div class="main-div">
+	<div id="welcome" class="rounded-corner gradient-background gray-border">
+		Ya Welcome Ya Welcome
+		<br>
+		Please choose your role!
+	</div>
+	<div class="wrapper">
+
+	<div id="poo" class="select rounded-corner"> Poo </div>
+	
+	<div id="simba" class="select rounded-corner"> Simba </div>
+
+	<div class="show-welcome rounded-corner"></div>
+
+</div>
+	<%= render "shared/chat" %>
+	
+</div>
+
+<script type="text/javascript">	
+	$(document).ready(function(){
+		$("#welcome").slideDown();
+		$("#welcome").css("display","inline-block");
+		$(".select").click(function(){
+		$.ajax({                          // start of ajax call that is called on every click!
+	            url: '<%= url_for(:action => "select_role") %>', // url for the action to be called "I used url_for helper" but you can also use the url specified in the routes.
+	            type: 'POST',
+	            datatype: "json",
+	            traditional: true,
+	            data: {
+	             role : $(this).attr("id"), // the data I'm sending in the params in order to be used within the action
+	            },
+	            timeout: 20000,
+	            success: function (data) { // upon success do the following function that takes as input the data returned by the action
+	            	
+	            	if(data.indexOf("Poo")>=0){
+	            		$(".show-welcome").attr("id","poo");
+	            	}else{
+	            		$(".show-welcome").attr("id","simba");
+	            	}
+	            	$(".show-welcome").append(data);	
+	            	$(".show-welcome").addClass("welcome");
+	            $(".select").fadeOut("slow",function(){
+	            	
+	           	 	$(".show-welcome").fadeIn("slow");
+	            	$(".show-welcome").css("display","inline-block");
+	            });
+	            
+	          }
+	        });
+		});
+	});
+</script>
