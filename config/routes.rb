@@ -1,4 +1,10 @@
 Randomer::Application.routes.draw do
+  get "chats/room"
+
+  get "sessions/new"
+
+  get "sessions/create"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +54,10 @@ Randomer::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'home#first_page'
+   get  '/login' => 'sessions#new', :as => :login
+   post '/login' => 'sessions#create', :as => :login
+   get  '/chatroom' => 'chats#room', :as => :chat
 
   # See how all your routes lay out with "rake routes"
 
